@@ -83,4 +83,4 @@ jobs:
       - name: print message
         run: |
           echo "One of the previous jobs failed. Please check the logs."
-          echo ${{ github}}
+          echo ${{ toJson(github)}}
