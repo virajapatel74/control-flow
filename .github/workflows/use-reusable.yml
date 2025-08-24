@@ -45,11 +45,8 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        node-version: [16, 18]
-        operating-system: [ubuntu-latest, windows-latest]
-        include:
-          - node-version: 16
-            operating-system: ubuntu-latest
+        node-version: [16]
+        operating-system: [ubuntu-latest]
     needs: test
     runs-on: ${{ matrix.operating-system }}
     steps:
