@@ -50,13 +50,6 @@ jobs:
         include:
           - node-version: 16
             operating-system: ubuntu-latest
-          - node-version: 18
-            operating-system: ubuntu-latest
-          - node-version: 16
-            operating-system: windows-latest
-        exclude:
-          - node-version: 18
-            operating-system: windows-latest
     needs: test
     runs-on: ${{ matrix.operating-system }}
     steps:
@@ -79,6 +72,8 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/reusable.yml
+    with:
+      artifact-name: dist-files
   report:
     needs: [lint, test, build, deploy]
     if: failure()
